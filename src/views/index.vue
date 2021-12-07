@@ -106,9 +106,11 @@
     <el-row :gutter="20">
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>联系信息</span>
-          </div>
+          <template v-slot:header>
+            <div class="clearfix">
+              <span>联系信息</span>
+            </div>
+          </template>
           <div class="body">
             <p>
               <i class="el-icon-s-promotion"></i> 官网：<el-link
@@ -142,10 +144,42 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>更新日志</span>
-          </div>
+          <template v-slot:header>
+            <div class="clearfix">
+              <span>更新日志</span>
+            </div>
+          </template>
           <el-collapse accordion>
+            <el-collapse-item title="v3.3.0 - 2021-12-13">
+              <ol>
+                <li>新增配套并同步的Vue3前端版本</li>
+                <li>新增认证对象简化权限验证</li>
+                <li>新增tab对象简化页签操作</li>
+                <li>修改获取缓存信息方式</li>
+                <li>修改权限认证注解实现</li>
+                <li>升级axios到最新版本0.24.0</li>
+                <li>升级core-js到最新版本3.19.1</li>
+                <li>升级jsencrypt到最新版本3.2.1</li>
+                <li>升级js-cookie到最新版本3.0.1</li>
+                <li>升级velocity到最新版本2.3</li>
+                <li>升级spring-boot到最新版本2.5.6</li>
+                <li>升级spring-boot-admin到最新版2.5.4</li>
+                <li>升级dynamic-ds到最新版本3.5.0</li>
+                <li>修复五级以上菜单出现的404问题</li>
+                <li>生产环境使用路由懒加载提升页面响应速度</li>
+                <li>任务屏蔽违规字符&参数忽略双引号中的逗号</li>
+                <li>优化用户个人信息接口防止修改用户名</li>
+                <li>优化登录/验证码请求headers不设置token</li>
+                <li>优化注册成功提示消息类型success</li>
+                <li>优化下载解析blob响应是否登录失效</li>
+                <li>修复字符串无法被反转义问题</li>
+                <li>修复响应体过大出现的乱码问题</li>
+                <li>修复回显数据字典组的键值错误</li>
+                <li>修复代码生成复选框字典遗漏问题</li>
+                <li>修复代码生成模板主子表删除缺少事务</li>
+                <li>其他细节优化</li>
+              </ol>
+            </el-collapse-item>
             <el-collapse-item title="v3.2.0 - 2021-10-12">
               <ol>
                 <li>菜单管理支持配置路由参数</li>
@@ -565,7 +599,7 @@
                 <li>slidebar eslint报错优化</li>
                 <li>当tags-view滚动关闭右键菜单</li>
                 <li>支持一级菜单（和主页同级）在main区域显示</li>
-                <li>限制外链地址必须以http(s)�/开头</li>
+                <li>限制外链地址必须以http(s)😕/开头</li>
                 <li>tagview & sidebar 主题颜色与element ui(全局)同步</li>
                 <li>
                   修复dict_sort不可update为0的问题&查询返回增加dict_sort升序排序
@@ -584,14 +618,16 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>捐赠支持</span>
-          </div>
+          <template v-slot:header>
+            <div class="clearfix">
+              <span>捐赠支持</span>
+            </div>
+          </template>
           <div class="body">
             <img
               src="https://oscimg.oschina.net/oscnet/up-d6695f82666e5018f715c41cb7ee60d3b73.png"
               alt="donate"
-              width="100%"
+              style="width:100%"
             />
             <span style="display: inline-block; height: 30px; line-height: 30px"
               >你可以请作者喝杯咖啡表示鼓励</span
@@ -603,21 +639,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Index",
-  data() {
-    return {
-      // 版本号
-      version: "3.2.0",
-    };
-  },
-  methods: {
-    goTarget(href) {
-      window.open(href, "_blank");
-    },
-  },
-};
+<script setup name="Index">
+const version = ref('3.3.0')
+
+function goTarget(url) {
+  window.open(url, '__blank')
+}
 </script>
 
 <style scoped lang="scss">
@@ -683,3 +710,4 @@ export default {
   }
 }
 </style>
+
