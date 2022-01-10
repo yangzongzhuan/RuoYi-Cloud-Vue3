@@ -64,7 +64,7 @@ export function runJob(jobId, jobGroup) {
     jobGroup
   }
   return request({
-    url: '/monitor/job/run',
+    url: '/schedule/job/run',
     method: 'put',
     data: data
   })
