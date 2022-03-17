@@ -58,7 +58,7 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo().then(res => {
           const user = res.user
-          const avatar = user.avatar == "" ? defAva :  user.avatar;
+          const avatar = (user.avatar == "" || user.avatar == null) ? defAva :  user.avatar;
 
           if (res.roles && res.roles.length > 0) { // 验证返回的roles是否是一个非空数组
             commit('SET_ROLES', res.roles)
