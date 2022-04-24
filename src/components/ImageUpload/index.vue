@@ -112,7 +112,7 @@ function handleRemove(file, files) {
 function handleUploadSuccess(res) {
   uploadList.value.push({ name: res.data.url, url: res.data.url });
   if (uploadList.value.length === number.value) {
-    fileList.value = fileList.value.concat(uploadList.value);
+    fileList.value = fileList.value.filter(f => f.url !== undefined).concat(uploadList.value);
     uploadList.value = [];
     number.value = 0;
     emit("update:modelValue", listToString(fileList.value));
