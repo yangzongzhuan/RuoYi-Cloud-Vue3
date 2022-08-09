@@ -24,13 +24,13 @@ const route = useRoute();
 const router = useRouter();
 const { proxy } = getCurrentInstance();
 const sizeOptions = ref([
-  { label: "½Ï´ó", value: "large" },
-  { label: "Ä¬ÈÏ", value: "default" },
-  { label: "ÉÔĞ¡", value: "small" },
+  { label: "è¾ƒå¤§", value: "large" },
+  { label: "é»˜è®¤", value: "default" },
+  { label: "ç¨å°", value: "small" },
 ]);
 
 function handleSetSize(size) {
-  proxy.$modal.loading("ÕıÔÚÉèÖÃ²¼¾Ö´óĞ¡£¬ÇëÉÔºò...");
+  proxy.$modal.loading("æ­£åœ¨è®¾ç½®å¸ƒå±€å¤§å°ï¼Œè¯·ç¨å€™...");
   appStore.setSize(size);
   setTimeout("window.location.reload()", 1000);
 }
