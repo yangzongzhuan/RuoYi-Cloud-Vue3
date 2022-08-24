@@ -12,7 +12,7 @@
       :show-file-list="false"
       :headers="headers"
       class="upload-file-uploader"
-      ref="upload"
+      ref="fileUpload"
     >
       <!-- 上传按钮 -->
       <el-button type="primary">选取文件</el-button>
@@ -138,13 +138,15 @@ function handleUploadError(err) {
 
 // 上传成功回调
 function handleUploadSuccess(res, file) {
-  uploadList.value.push({ name: res.data.url, url: res.data.url });
-  if (uploadList.value.length === number.value) {
-    fileList.value = fileList.value.filter(f => f.url !== undefined).concat(uploadList.value);
-    uploadList.value = [];
-    number.value = 0;
-    emit("update:modelValue", listToString(fileList.value));
+  if (res.code === 200) {
+    uploadList.value.push({ name: res.data.url, url: res.data.url });
+    uploadedSuccessfully();
+  } else {
+    number.value--;
     proxy.$modal.closeLoading();
+    proxy.$modal.msgError(res.msg);
+    proxy.$refs.fileUpload.handleRemove(file);
+    uploadedSuccessfully();
   }
 }
 
@@ -152,6 +154,17 @@ function handleUploadSuccess(res, file) {
 function handleDelete(index) {
   fileList.value.splice(index, 1);
   emit("update:modelValue", listToString(fileList.value));
+}
+
+// 上传结束处理
+function uploadedSuccessfully() {
+  if (number.value > 0 && uploadList.value.length === number.value) {
+    fileList.value = fileList.value.filter(f => f.url !== undefined).concat(uploadList.value);
+    uploadList.value = [];
+    number.value = 0;
+    emit("update:modelValue", listToString(fileList.value));
+    proxy.$modal.closeLoading();
+  }
 }
 
 // 获取文件名称
@@ -168,7 +181,7 @@ function listToString(list, separator) {
   let strs = "";
   separator = separator || ",";
   for (let i in list) {
-    if(undefined !== list[i].url) {
+    if (list[i].url) {
       strs += list[i].url + separator;
     }
   }
