@@ -68,9 +68,10 @@
   </div>
 </template>
 
-<script setup name="configuration">
+<script lang="ts" setup name="configuration">
 
 import listConfiguration from "@/api/serviceConfig/configuration";
+import {getCurrentInstance, reactive, ref, toRefs} from "vue";
 
 const { proxy } = getCurrentInstance();
 const configurationList = ref([]);
