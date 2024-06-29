@@ -132,7 +132,7 @@
       @pagination="getList"
     />
     <!-- 预览界面 -->
-    <el-dialog :title="preview.title" v-model="preview.open" width="80%" top="5vh" append-to-body custom-class="scrollbar">
+    <el-dialog :title="preview.title" v-model="preview.open" width="80%" top="5vh" append-to-body class="scrollbar">
       <el-tabs v-model="preview.activeName">
         <el-tab-pane
           v-for="(value, key) in preview.data"
@@ -205,11 +205,13 @@ function getList() {
     loading.value = false;
   });
 }
+
 /** 搜索按钮操作 */
 function handleQuery() {
   queryParams.value.pageNum = 1;
   getList();
 }
+
 /** 生成代码操作 */
 function handleGenTable(row) {
   const tbNames = row.tableName || tableNames.value;
@@ -225,6 +227,7 @@ function handleGenTable(row) {
     proxy.$download.zip("/code/gen/batchGenCode?tables=" + tbNames, "ruoyi.zip");
   }
 }
+
 /** 同步数据库操作 */
 function handleSynchDb(row) {
   const tableName = row.tableName;
@@ -234,6 +237,7 @@ function handleSynchDb(row) {
     proxy.$modal.msgSuccess("同步成功");
   }).catch(() => {});
 }
+
 /** 打开导入表弹窗 */
 function openImportTable() {
   proxy.$refs["importRef"].show();
@@ -244,6 +248,7 @@ function resetQuery() {
   proxy.resetForm("queryRef");
   handleQuery();
 }
+
 /** 预览按钮 */
 function handlePreview(row) {
   previewTable(row.tableId).then(response => {
@@ -252,10 +257,12 @@ function handlePreview(row) {
     preview.value.activeName = "domain.java";
   });
 }
+
 /** 复制代码成功 */
 function copyTextSuccess() {
   proxy.$modal.msgSuccess("复制成功");
 }
+
 // 多选框选中数据
 function handleSelectionChange(selection) {
   ids.value = selection.map(item => item.tableId);
@@ -263,11 +270,13 @@ function handleSelectionChange(selection) {
   single.value = selection.length != 1;
   multiple.value = !selection.length;
 }
+
 /** 修改按钮操作 */
 function handleEditTable(row) {
   const tableId = row.tableId || ids.value[0];
   router.push({ path: "/tool/gen-edit/index/" + tableId, query: { pageNum: queryParams.value.pageNum } });
 }
+
 /** 删除按钮操作 */
 function handleDelete(row) {
   const tableIds = row.tableId || ids.value;

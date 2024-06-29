@@ -175,6 +175,7 @@ function uploadedSuccessfully() {
     proxy.$modal.closeLoading();
   }
 }
+
 // 上传失败
 function handleUploadError() {
   proxy.$modal.msgError("上传图片失败");

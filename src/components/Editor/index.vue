@@ -67,7 +67,7 @@ const props = defineProps({
   /* 类型（base64格式、url格式） */
   type: {
     type: String,
-    default: "base64",
+    default: "url",
   }
 });
 
