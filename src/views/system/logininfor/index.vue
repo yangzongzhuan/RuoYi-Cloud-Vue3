@@ -222,7 +222,7 @@ function handleUnlock() {
 function handleExport() {
   proxy.download("system/logininfor/export", {
     ...queryParams.value,
-  }, `config_${new Date().getTime()}.xlsx`);
+  }, `logininfor_${new Date().getTime()}.xlsx`);
 }
 
 getList();
