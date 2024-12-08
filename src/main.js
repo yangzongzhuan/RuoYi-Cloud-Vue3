@@ -16,7 +16,7 @@ import directive from './directive' // directive
 
 // 注册指令
 import plugins from './plugins' // plugins
-import { download } from '@/service/index.js'
+import { download } from '@/service/public.js'
 
 // svg图标
 import 'virtual:svg-icons-register'
