@@ -1,5 +1,5 @@
 import store from '@/store'
-import defaultSettings from '@/settings'
+import defaultSettings from '@/config/settings'
 import useSettingsStore from '@/store/modules/settings'
 
 /**
