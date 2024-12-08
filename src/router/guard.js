@@ -1,4 +1,4 @@
-import router from './router'
+import router from '.'
 import { ElMessage } from 'element-plus'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
