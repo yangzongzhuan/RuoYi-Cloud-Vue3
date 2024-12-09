@@ -25,7 +25,7 @@ import elementIcons from '@/components/SvgIcon/svgicon'
 
 import './router/guard' // permission control
 
-import { useDict } from '@/utils/dict'
+import { useDict } from '@/service/dict'
 import { parseTime, resetForm, addDateRange, handleTree, selectDictLabel, selectDictLabels } from '@/utils/ruoyi'
 
 // 分页组件
