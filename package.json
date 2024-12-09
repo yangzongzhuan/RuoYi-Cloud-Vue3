@@ -37,6 +37,7 @@
     "vuedraggable": "4.1.0"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.280",
     "@vitejs/plugin-vue": "5.0.5",
     "sass": "1.77.5",
     "unocss": "0.65.1",
