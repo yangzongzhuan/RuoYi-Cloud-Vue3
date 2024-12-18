@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '@/service/index.js'
 
 // 查询字典类型列表
 export function listType(query) {
