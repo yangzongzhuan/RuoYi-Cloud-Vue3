@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '@/service/index.js'
 
 // 登录方法
 export function login(username, password, code, uuid) {
