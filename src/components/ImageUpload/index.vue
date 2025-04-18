@@ -6,6 +6,7 @@
       list-type="picture-card"
       :on-success="handleUploadSuccess"
       :before-upload="handleBeforeUpload"
+      :data="data"
       :limit="limit"
       :on-error="handleUploadError"
       :on-exceed="handleExceed"
@@ -50,6 +51,15 @@ import { getToken } from "@/utils/auth";
 
 const props = defineProps({
   modelValue: [String, Object, Array],
+  // 上传接口地址
+  action: {
+    type: String,
+    default: "/file/upload"
+  },
+  // 上传携带的参数
+  data: {
+    type: Object
+  },
   // 图片数量限制
   limit: {
     type: Number,
@@ -79,7 +89,7 @@ const uploadList = ref([]);
 const dialogImageUrl = ref("");
 const dialogVisible = ref(false);
 const baseUrl = import.meta.env.VITE_APP_BASE_API;
-const uploadImgUrl = ref(import.meta.env.VITE_APP_BASE_API + "/file/upload"); // 上传的图片服务器地址
+const uploadImgUrl = ref(baseUrl + props.action); // 上传的图片服务器地址
 const headers = ref({ Authorization: "Bearer " + getToken() });
 const fileList = ref([]);
 const showTip = computed(
