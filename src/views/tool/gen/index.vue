@@ -275,6 +275,7 @@ function handleEditTable(row) {
   const params = { pageNum: queryParams.value.pageNum }
   proxy.$tab.openPage("修改[" + tableName + "]生成配置", '/tool/gen-edit/index/' + tableId, params)
 }
+
 /** 删除按钮操作 */
 function handleDelete(row) {
   const tableIds = row.tableId || ids.value
