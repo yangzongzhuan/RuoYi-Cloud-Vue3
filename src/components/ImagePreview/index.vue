@@ -28,35 +28,35 @@ const props = defineProps({
     type: [Number, String],
     default: ""
   }
-});
+})
 
 const realSrc = computed(() => {
   if (!props.src) {
-    return;
+    return
   }
-  let real_src = props.src.split(",")[0];
-  return real_src;
-});
+  let real_src = props.src.split(",")[0]
+  return real_src
+})
 
 const realSrcList = computed(() => {
   if (!props.src) {
-    return;
+    return
   }
-  let real_src_list = props.src.split(",");
-  let srcList = [];
+  let real_src_list = props.src.split(",")
+  let srcList = []
   real_src_list.forEach(item => {
-    return srcList.push(item);
-  });
-  return srcList;
-});
+    return srcList.push(item)
+  })
+  return srcList
+})
 
 const realWidth = computed(() =>
   typeof props.width == "string" ? props.width : `${props.width}px`
-);
+)
 
 const realHeight = computed(() =>
   typeof props.height == "string" ? props.height : `${props.height}px`
-);
+)
 </script>
 
 <style lang="scss" scoped>
