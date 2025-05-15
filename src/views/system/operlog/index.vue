@@ -202,7 +202,7 @@
 import { list, delOperlog, cleanOperlog } from "@/api/system/operlog"
 
 const { proxy } = getCurrentInstance()
-const { sys_oper_type, sys_common_status } = proxy.useDict("sys_oper_type","sys_common_status")
+const { sys_oper_type, sys_common_status } = proxy.useDict("sys_oper_type", "sys_common_status")
 
 const operlogList = ref([])
 const open = ref(false)
