@@ -985,10 +985,10 @@
   </div>
 </template>
 
-<script setup name="Index">
-const version = ref('3.6.7')
+<script setup lang="ts" name="Index">
+const version = ref<string>('3.6.7')
 
-function goTarget(url) {
+function goTarget(url: string): void {
   window.open(url, '__blank')
 }
 </script>

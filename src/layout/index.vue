@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useWindowSize } from '@vueuse/core'
 import Sidebar from './components/Sidebar/index.vue'
 import { AppMain, Navbar, Settings, TagsView } from './components'
@@ -52,7 +52,7 @@ watchEffect(() => {
   }
 })
 
-function handleClickOutside() {
+function handleClickOutside(): void {
   useAppStore().closeSideBar({ withoutAnimation: false })
 }
 

@@ -14,7 +14,7 @@
   </el-image>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   src: {
     type: String,
@@ -32,20 +32,20 @@ const props = defineProps({
 
 const realSrc = computed(() => {
   if (!props.src) {
-    return
+    return undefined
   }
-  let real_src = props.src.split(",")[0]
-  return real_src
+  const real_src = props.src.split(",")[0]
+    return real_src
 })
 
 const realSrcList = computed(() => {
   if (!props.src) {
-    return
+    return undefined
   }
-  let real_src_list = props.src.split(",")
-  let srcList = []
-  real_src_list.forEach(item => {
-    return srcList.push(item)
+  const real_src_list = props.src.split(",")
+  const srcList: string[] = []
+  real_src_list.forEach((item: string) => {
+    srcList.push(item)
   })
   return srcList
 })
