@@ -352,8 +352,8 @@ function reset() {
     jobGroup: undefined,
     invokeTarget: undefined,
     cronExpression: undefined,
-    misfirePolicy: 1,
-    concurrent: 1,
+    misfirePolicy: '1',
+    concurrent: '1',
     status: "0"
   }
   proxy.resetForm("jobRef")
