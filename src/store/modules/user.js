@@ -3,6 +3,7 @@ import { ElMessageBox, } from 'element-plus'
 import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { isEmpty } from "@/utils/validate"
+import useLockStore from '@/store/modules/lock'
 import defAva from '@/assets/images/profile.jpg'
 
 const useUserStore = defineStore(
@@ -29,6 +30,7 @@ const useUserStore = defineStore(
             let data = res.data
             setToken(data.access_token)
             this.token = data.access_token
+            useLockStore().unlockScreen()
             resolve()
           }).catch(error => {
             reject(error)
