@@ -42,6 +42,15 @@ export function getInfo(): Promise<UserInfoResult> {
   })
 }
 
+// 解锁屏幕
+export function unlockScreen(password: string) {
+  return request({
+    url: '/auth/unlockscreen',
+    method: 'post',
+    data: { password }
+  })
+}
+
 // 退出方法
 export function logout(): Promise<AjaxResult> {
   return request({

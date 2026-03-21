@@ -46,7 +46,10 @@
             </router-link>
             <el-dropdown-item command="setLayout" v-if="settingsStore.showSettings">
                 <span>布局设置</span>
-              </el-dropdown-item>
+            </el-dropdown-item>
+            <el-dropdown-item command="lockScreen">
+                <span>锁定屏幕</span>
+            </el-dropdown-item>
             <el-dropdown-item divided command="logout">
               <span>退出登录</span>
             </el-dropdown-item>
@@ -71,10 +74,14 @@ import RuoYiGit from '@/components/RuoYi/Git/index.vue'
 import RuoYiDoc from '@/components/RuoYi/Doc/index.vue'
 import useAppStore from '@/store/modules/app'
 import useUserStore from '@/store/modules/user'
+import useLockStore from '@/store/modules/lock'
 import useSettingsStore from '@/store/modules/settings'
 
+const route = useRoute()
+const router = useRouter()
 const appStore = useAppStore()
 const userStore = useUserStore()
+const lockStore = useLockStore()
 const settingsStore = useSettingsStore()
 
 function toggleSideBar(): void {
@@ -85,6 +92,9 @@ function handleCommand(command: string): void {
   switch (command) {
     case "setLayout":
       setLayout()
+      break
+    case "lockScreen":
+      lockScreen()
       break
     case "logout":
       logout()
@@ -109,6 +119,12 @@ function logout(): void {
 const emits = defineEmits(['setLayout'])
 function setLayout(): void {
   emits('setLayout')
+}
+
+function lockScreen() {
+  const currentPath = route.fullPath
+  lockStore.lockScreen(currentPath)
+  router.push('/lock')
 }
 
 async function toggleTheme(event?: MouseEvent): Promise<void> {
@@ -202,11 +218,6 @@ async function toggleTheme(event?: MouseEvent): Promise<void> {
     align-items: center;
     overflow: hidden;
     margin-left: 8px;
-  }
-
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
   }
 
   .right-menu {
