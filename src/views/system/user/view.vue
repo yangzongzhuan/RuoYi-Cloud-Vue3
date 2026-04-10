@@ -136,11 +136,10 @@ const loading = ref<boolean>(false)
 const info = reactive<SysUser>({})
 const postOptions = ref<SysPost[]>([])
 const roleOptions = ref<SysRole[]>([])
-const { proxy } = getCurrentInstance()
 
-const { sys_user_sex } = proxy.useDict("sys_user_sex")
+const { sys_user_sex } = useDict("sys_user_sex")
 
-const sexLabel = computed(() => proxy.selectDictLabel(sys_user_sex.value, info.sex) || '-')
+const sexLabel = computed(() => selectDictLabel(sys_user_sex.value, info.sex) || '-')
 
 const postNames = computed<string>(() => {
   if (!postOptions.value.length || !info.postIds) return ''

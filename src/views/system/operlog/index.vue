@@ -159,7 +159,7 @@ import { list, delOperlog, cleanOperlog } from "@/api/system/operlog"
 import type { SysOperLog, OperlogQueryParams } from '@/types/api/system/operlog'
 
 const { proxy } = getCurrentInstance()
-const { sys_oper_type, sys_common_status } = proxy.useDict("sys_oper_type", "sys_common_status")
+const { sys_oper_type, sys_common_status } = useDict("sys_oper_type", "sys_common_status")
 
 const operlogList = ref<SysOperLog[]>([])
 const detailVisible = ref<boolean>(false)
