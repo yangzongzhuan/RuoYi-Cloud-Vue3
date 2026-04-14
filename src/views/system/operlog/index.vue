@@ -154,7 +154,7 @@
 </template>
 
 <script setup lang="ts" name="Operlog">
-import OperlogDetail from './detail'
+import OperlogDetail from './detail.vue'
 import { list, delOperlog, cleanOperlog } from "@/api/system/operlog"
 import type { SysOperLog, OperlogQueryParams } from '@/types/api/system/operlog'
 
